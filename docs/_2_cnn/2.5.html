@@ -3,13 +3,13 @@
 <li><strong>网络局部连接（Local Connectivity）</strong></li>
 </ol>
 <p data-source-line="6">一般认为人对外界的认知是从局部到全局的，而图像的空间联系也是局部的像素联系较为紧密，而距离较远的像素相关性则较弱。因而，每个神经元其实没有必要对全局图像进行感知，只需要对局部进行感知，然后在更高层将局部的信息综合起来就得到了全局的信息。即，局部感受野指卷积层的神经元只和上一层map的局部相联系。---<a href="https://www.zhihu.com/question/36980971" target="_blank">知乎回答</a></p>
-<p data-source-line="8"><img width="50%" height="50%" src="../images/_2_5_1.png" alt="image.png"></p>
+<p data-source-line="8"><img width="50%" height="50%" src="/images/_2_5_1.png" alt="image.png"></p>
 <p> 也就是结果矩阵可以很容易的发现，里面的每一个结果，都只是和原矩阵的局部区域的感知。这个局部感知的概念是相对于全连接层来的，早期的多层感知机模型（MLP），以及早期我们俗称“神经网络”的东西（2012年之前），基本指代的都是带线性或者非线性激活的多个全连接层叠加，用作分类或者回归的任务，尤其是针对回归任务来讲。局部感知的主要的好处就是缩减了无关的信息，能够得到局部里的比较显著的特征，这样不同的局部之间的差别可以区分的更好。</p>
 <p data-source-line="11">同时我们可以发现，由于是卷积核“扫描”进行的局部感知，所以结果矩阵对于原图矩阵的各个局部的位置信息是没有发生变化的，这一切都给下面的第三个特性做了基础。</p>
 <ol start="2" data-source-line="14">
 <li><strong>卷积核参数共享（Parameter Sharing）</strong></li>
 </ol>
-<p data-source-line="16"><img src="../images/_2_5_2.png" alt="image.png"></p>
+<p data-source-line="16"><img src="/images/_2_5_2.png" alt="image.png"></p>
 <p data-source-line="18">也就是一个卷积核里的参数，扫一张图是共享的，而不是说扫一下，就给变一下。所以一张特征图（也就是一个卷积核扫出来的图），反应的就是这个卷积核的特征形状的位置和强度的分布。这样比如你定义的卷积层是filters 64，kernel_size 3x3。这样你得到的特征图，64个通道就是64个卷积核提取到的特征，每个通道反应的都是这个特征的位置和强度的分布，卷积神经网络在训练的时候会训练这些参数从而对64个特征进行排布。</p>
 <p data-source-line="20">所以一个接收输入为<code data-role="inline-katex" data-src="10%5Ctimes%2010%20%5Ctimes%203" data-processed="10%5Ctimes%2010%20%5Ctimes%203"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>10</mn><mo>×</mo><mn>10</mn><mo>×</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">10\times 10 \times 3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.72777em; vertical-align: -0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.72777em; vertical-align: -0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">3</span></span></span></span></code>的图像，经过一个64通道3x3的卷积层，卷积层没有什么特别的设置的情况下，其参数量是<code data-role="inline-katex" data-src="64%5Ctimes%203%5Ctimes%203" data-processed="64%5Ctimes%203%5Ctimes%203"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>64</mn><mo>×</mo><mn>3</mn><mo>×</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">64\times 3\times 3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.72777em; vertical-align: -0.08333em;"></span><span class="mord">6</span><span class="mord">4</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.72777em; vertical-align: -0.08333em;"></span><span class="mord">3</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">3</span></span></span></span></code>，你会发现和原图的shape没有区别。</p>
 <ol start="3" data-source-line="23">
@@ -17,11 +17,11 @@
 </ol>
 <p data-source-line="25">基于上述的几个特性，最后会发现整个神经网络的处理过程中，所有的输入输出的矩阵都抱有位置不变的特性，这个叫做位移不变性。是卷积神经网络最重要的理论特性之一。你会发现池化的设计本身，也是在保持原来的特征不变性。</p>
 <h3 id="二-回顾一下alexnet" data-source-line="27"><a class="markdownIt-Anchor" href="#二-回顾一下alexnet"></a>二、回顾一下AlexNet</h3>
-<p data-source-line="29"><img width="50%" height="50%" src="../images/_2_5_3.png" alt="image.png"></p>
+<p data-source-line="29"><img width="50%" height="50%" src="/images/_2_5_3.png" alt="image.png"></p>
 <p data-source-line="31">在AlexNet中，输入如果是224,224,3的图像的话，在进入FC层前的特征图，是7,7,256。根据上述的平移不变性，我们很容易能够理解到，在7x7的这样的一个幕布里，保留了256种深度特征的分布情况，包括强度和位置。所以我们是不希望在矩阵拉平进入分类器的之前的特征图的前置shape过于的小。当输出channel小的时候，比如只有256的时候，我们是希望前面的shape大一些，而当输出的channel非常的大，比如2048的时候，我们可以适当的进行缩小，比如最后得到4,4,2048的这样的特征图。</p>
 <p data-source-line="34"><strong>进一步的思考。</strong></p>
 <p data-source-line="37">我们得到的最终的特征图，在我们之前的想法里，也就是Alex的想法里，是拉成一长条的向量的时候，然后进行分类，这样比如有十张你的人脸照片，得到的特征图都是非常的类似的，在4,4,2048里，2048种特征都是一样的，处理你的十张图片，能够得到他们的【强度】，但是你会发现，会存在一个【位置】的问题：</p>
-<p data-source-line="39"><img width="40%" height="40%" src="../images/_2_5_4.png" alt="image.png"></p>
+<p data-source-line="39"><img width="40%" height="40%" src="/images/_2_5_4.png" alt="image.png"></p>
 <p data-source-line="41">比如这两张图，你的人脸一个出现在左上角，一个出现在右下角，这样最终的特征图会发生什么问题？
 最终得到的4x4x2048，或者7x7x256，虽然特征【强度】都很大，但是最终表现的情况为一张图主要在左上角的大，一张图的在右下角的大。虽然我们可以把这个问题完全的抛给FC去训练，你可以说效果不好是因为FC训练的不好，但我们实际上是可以进行更好的改进让它变好。</p>
 <p data-source-line="45">改进的大体的思路主要在对channel进行拉大，也就是尽量不要只有256，可以多用2048，然后可以对4x4x2048的这样的特征图，我们不直接拉成向量做后续的分类，而是对2048个特征，将2048个4x4的矩阵做一个平均池化，直接得到2048,的向量，每个值是原来的均值，这样你会发现上面的问题得到了解决。</p>

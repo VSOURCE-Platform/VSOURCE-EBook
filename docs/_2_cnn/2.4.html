@@ -2,12 +2,12 @@
 <h3 id="一-说明" data-source-line="3"><a class="markdownIt-Anchor" href="#一-说明"></a>一、说明</h3>
 <p data-source-line="5">首先要知道，AlexNet是2012年提出来了，到今天有了9年的历史，这个所谓是“第一个卷积神经网络”，但要注意，这个并不是第一个“深度学习”网络，因为AlexNet的网络层数很浅，并没有拉伸。要注意，在这篇AlexNet的论文中，也是GPU第一次被用于训练神经网络。</p>
 <p data-source-line="8">其原论文目前被引量接近8万，可以直接通过scholar.google查阅到原文：</p>
-<p data-source-line="11"><img src="../images/_2_4_1.png" alt="image.png"></p>
+<p data-source-line="11"><img src="/images/_2_4_1.png" alt="image.png"></p>
 <p data-source-line="14">AlexNet的名称也是来源于第一作者的名称，这也是第一次采用卷积神经网络的方法来提取图像里和标签对应的特征。要注意本质上神经网络在提取特征，提取的特征指的是显著性与提供的标签所对应的图像的特征。</p>
 <p data-source-line="17">作为深度学习的开山鼻祖，这篇文章在条件允许的情况下，还是希望大家能够读一下。</p>
 <h3 id="二-卷积神经网络部件components" data-source-line="20"><a class="markdownIt-Anchor" href="#二-卷积神经网络部件components"></a>二、卷积神经网络部件（Components）</h3>
 <p data-source-line="22">先不谈AlexNet的细节，对于一般的简单的卷积神经网络的组成，如下图所示：</p>
-<p data-source-line="24"><img src="../images/_2_4_2.png" alt="image.png"></p>
+<p data-source-line="24"><img src="/images/_2_4_2.png" alt="image.png"></p>
 <p data-source-line="26">可以看到，一共有五个组成部分：</p>
 <ol data-source-line="28">
 <li>输入层（Input Layer）：往往指的是输入的图像，这里往往要固定好图像的shape，即height, width, channel的形式。</li>
@@ -100,7 +100,7 @@
 （1）units：FC全连接神经元的数量，越多计算量越大。
 （2）activation：激活函数的指定。</p>
 <h3 id="三-alexnet结构" data-source-line="131"><a class="markdownIt-Anchor" href="#三-alexnet结构"></a>三、AlexNet结构</h3>
-<p data-source-line="134"><img width="50%" height="50%" src="../images/_2_4_3.png" alt="image.png"></p>
+<p data-source-line="134"><img width="50%" height="50%" src="/images/_2_4_3.png" alt="image.png"></p>
 <p data-source-line="136">结构是从下到上，最下方的输入图像的shape为[224,224,3]，整体流程:</p>
 <ol data-source-line="139">
 <li>经过一个kernel 11x11的，strides为4的卷积层，输出shape为[56,56,96]。</li>

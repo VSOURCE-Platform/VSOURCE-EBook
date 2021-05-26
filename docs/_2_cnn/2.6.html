@@ -6,7 +6,7 @@
 <p data-source-line="16">ResNet采用一种等值映射（Identity Mapping）的方式来加深网络。这种方式非常的简单，简单到你可能会怀疑人生，也就是在上述线性的叠加的情况下，引入一条线做一个前值的叠加。</p>
 <p data-source-line="19">ResNet也是目前为止在人脸识别上依然效用最好的网络。相比于在其他任务上取得了好成绩的网络，ResNet只要调好参数，是不虚其他的网络的，不同人手上的ResNet效果是不一样的。所以ResNet往往也会作为一个调参的Baseline。</p>
 <h3 id="二-resnet核心结构" data-source-line="20"><a class="markdownIt-Anchor" href="#二-resnet核心结构"></a>二、ResNet核心结构</h3>
-<p data-source-line="22"><img src="../images/_2_6_1.png"></p>
+<p data-source-line="22"><img src="/images/_2_6_1.png"></p>
 <p data-source-line="24">ResNet的核心结构便是上图描述的这种，两个方框是卷积层，输入的x，经过两层卷积得到输出后，这个输出再【直接叠加】原来的输入，并经过relu进行激活。用代码来解释的话便是下面这样：</p>
 <pre data-source-line="25"><code class="hljs"><span class="hljs-keyword">import</span> tensorflow.keras.layers <span class="hljs-keyword">as</span> layers
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">residual_cnn</span><span class="hljs-params">(input_tensor)</span>:</span>
@@ -34,7 +34,7 @@
 <p data-source-line="56">只有基础的结构的话，确实可以将网络拉深，但拉深到多少层？要不要加点别的东西？这里就是一个经验和试错的工作，在ResNet原论文中，提出了几种性能优良的整体网络结构，根据层数分别是ResNet18，ResNet34，ResNet50，ResNet110，ResNet152，ResNet1001这几个。</p>
 <p data-source-line="59">其中ResNet18和ResNet34是一个体系，因为这两个的基础结构和上述的一致，基础结构中只有两层3x3卷积然后便叠加。而ResNet50开始的后续，基础结构是三层卷积，窗口分别是1x1, 3x3, 1x1，前后两个1x1是为了降采样和升采样。并且，在整个网络结构中，也需要对shape进行缩减，这里不采用池化进行缩减，而是采用跨步卷积。</p>
 <p data-source-line="62">我们将整个结构分为四个Block，每个Block内部不进行缩减的操作，只是套几层基础残差结构，每个Block之间会在第一层卷积的位置进行跨步卷积，达到一个缩减的目的。一般ResNet网络有四个Block。ResNet34的网络结构如下所示，可以看到每两个3x3卷积层形成一个基础结构，并且第一个block有3个基础结构，第一个block到第二个block之间以虚线连接，有4个基础结构，第三个Block有6个基础结构，第四个block有3个基础结构，并且第四个block的输出直接通过GlobalAvergePooling得到向量后，进行类别映射直接输出。</p>
-<p data-source-line="65"><img src="../images/_2_6_2.png"></p>
+<p data-source-line="65"><img src="/images/_2_6_2.png"></p>
 <h3 id="四-resnet34的网络实现" data-source-line="67"><a class="markdownIt-Anchor" href="#四-resnet34的网络实现"></a>四、ResNet34的网络实现。</h3>
 <p data-source-line="70">在上述的过程中，为了简化网络的实现，我们可以将两个基础结构作为一个函数进行封装，一个是不带缩减的正常的基础结构，我们命名为identity_block，每一个里面包含两个conv_bn_relu的结构，并且叠加后进行relu的激活的输出，而且输入输出的图像是不会缩减的。</p>
 <pre data-source-line="71"><code class="hljs"><span class="hljs-keyword">import</span> tensorflow.keras.layers <span class="hljs-keyword">as</span> layers

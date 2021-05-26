@@ -50,18 +50,18 @@
 <p data-source-line="48"><strong>（步骤二）添加环境变量</strong></p>
 <p data-source-line="50">（1）TensorFlow-gpu==2.4.0下载完成后，我们暂时不需要做什么。</p>
 <p data-source-line="52">（2）CUDATOOLKit==11.0下载完成后，我们安装教程进行安装，安装在默认的目录为C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.0，然后我们需要将这个目录下的bin和libnvvp两个文件夹加入环境变量。</p>
-<p data-source-line="54"><img src="../images/_1_2_1.png" alt="image.png" data-processed="..%2Fimages%2F_1_2_1.png"></p>
+<p data-source-line="54"><img src="/images/_1_2_1.png" alt="image.png" data-processed="..%2Fimages%2F_1_2_1.png"></p>
 <p data-source-line="56">（3）将CUDNN下载到的压缩包解压，解压得到的目录下面的文件，拷贝到CUDA的目录，也就是上面那一步骤的v11.0的文件夹下，替换所有的文件即可。</p>
 <p data-source-line="58"><strong>（步骤三）检查版本</strong></p>
 <p data-source-line="60">（1）先进入对应的conda虚拟环境，然后检查TensorFlow-gpu的版本。</p>
 <pre data-source-line="61"><code class="hljs">pip list
 </code></pre><p data-source-line="64">在下面找到Tensorflow的版本，查看是否为2.4.0。</p>
 <p data-source-line="66">（2）检查CUDA的版本。</p>
-<p data-source-line="68"><img src="../images/_1_2_2.png" alt="image.png" data-processed="..%2Fimages%2F_1_2_2.png"></p>
+<p data-source-line="68"><img src="/images/_1_2_2.png" alt="image.png" data-processed="..%2Fimages%2F_1_2_2.png"></p>
 <p data-source-line="70">可以看到在上述添加了环境变量的bin目录下，存在nvcc的这个可执行程序，我们直接打开cmd，然后输入nvcc -V，可以查看CUDA是否为11.0版本。</p>
 <p data-source-line="72">如果nvcc说找不到，说明环境变量没有添加，就把这个目录再添加到环境变量。</p>
 <p data-source-line="74">（3）检查CUDNN的版本。</p>
-<p data-source-line="76"><img src="../images%/_1_2_3.png" alt="image.png" data-processed="..%2Fimages%2F_1_2_3.png"></p>
+<p data-source-line="76"><img src="/images%/_1_2_3.png" alt="image.png" data-processed="..%2Fimages%2F_1_2_3.png"></p>
 <p data-source-line="78">在CUDA的目录下，找到include文件夹，下面有一个cudnn_version.h文件，打开后即可看到CUDNN的版本。</p>
 <p data-source-line="80"><strong>（步骤四）测试运行TensorFlow-gpu。</strong></p>
 <p data-source-line="82">在对应的conda虚拟环境中，输入python进入命令行交互模型，运行：</p>
@@ -126,7 +126,7 @@ coreClock: 1.8GHz coreCount: 68 deviceMemorySize: 10.00GiB deviceMemoryBandwidth
 	model.evaluate(x_test, y_test)
 </code></pre><p data-source-line="151">然后，进入我们安装的tf-gpu的虚拟环境，从cmd命令行cd到test.py的目录，然后执行这个python脚本：</p>
 <pre data-source-line="152"><code class="hljs">python -u test.py
-</code></pre><p data-source-line="155"><img src="../images/_1_2_4.png" alt="image.png" data-processed="..%2Fimages%2F_1_2_4.png"></p>
+</code></pre><p data-source-line="155"><img src="/images/_1_2_4.png" alt="image.png" data-processed="..%2Fimages%2F_1_2_4.png"></p>
 <p data-source-line="157">以上的界面，即是在正常的训练一个手写数字识别，可以看到我们确实使用的是gpu的环境（上述的日志中包含了Adding visible gpu devices: 0 ），跑了五轮，准确率在97.54%。关于mnist数据集的细节，以及上述一个脚本的里面的原理，以及pycharm的使用，我们之后会讲，这里还是测试tf-gpu的环境是否安装成功。</p>
 <p data-source-line="159"><a></a></p>
 <h3 id="三-预测环境安装" data-source-line="160"><a class="markdownIt-Anchor" href="#三-预测环境安装"></a>三、预测环境安装</h3>
@@ -160,17 +160,17 @@ coreClock: 1.8GHz coreCount: 68 deviceMemorySize: 10.00GiB deviceMemoryBandwidth
 <h4 id="42-步骤二登陆百度智能云若没有账号的话则需要注册一个账号" data-source-line="197"><a class="markdownIt-Anchor" href="#42-步骤二登陆百度智能云若没有账号的话则需要注册一个账号"></a>4.2 步骤二，登陆百度智能云，若没有账号的话，则需要注册一个账号。</h4>
 <p data-source-line="199"><a></a></p>
 <h4 id="43-步骤三注册完账号或者登陆后会进入控制台" data-source-line="200"><a class="markdownIt-Anchor" href="#43-步骤三注册完账号或者登陆后会进入控制台"></a>4.3 步骤三，注册完账号，或者登陆后会进入控制台</h4>
-<p data-source-line="201"><img src="../images/_1_2_5.png" alt="image.png" data-processed="..%2Fimages%2F_1_2_5.png"></p>
+<p data-source-line="201"><img src="/images/_1_2_5.png" alt="image.png" data-processed="..%2Fimages%2F_1_2_5.png"></p>
 <p data-source-line="203">点击【创建应用】按钮。</p>
-<p data-source-line="205"><img src="../images/_1_2_6.png" alt="image.png" data-processed="..%2Fimages%2F_1_2_6.png"></p>
+<p data-source-line="205"><img src="/images/_1_2_6.png" alt="image.png" data-processed="..%2Fimages%2F_1_2_6.png"></p>
 <p data-source-line="207">在这个界面，确认里面包含人脸对比，然后带*的都填写一下，随便填一下用途即可。创建完之后，点击管理应用，会发现刚刚创建的应用，然后会发现每个应用，都带有AppID、API Key、Secret Key这几个，这几个是比较重要的，这里留一个心眼。</p>
-<p data-source-line="209"><img src="../images/_1_2_7.png" alt="image.png" data-processed="..%2Fimages%2F_1_2_7.png"></p>
+<p data-source-line="209"><img src="/images/_1_2_7.png" alt="image.png" data-processed="..%2Fimages%2F_1_2_7.png"></p>
 <p data-source-line="211"><a></a></p>
 <h4 id="34-步骤四获得授权token" data-source-line="212"><a class="markdownIt-Anchor" href="#34-步骤四获得授权token"></a>3.4 步骤四，获得授权Token</h4>
 <p data-source-line="214">我们拿到上面的应用的API Key，比如叫做xxxkey，然后点击Secret Key显示出来，比如叫做yyykey，然后在浏览器打开下面的链接，要注意把下面的【xxxkey】的区域替换成你刚刚复制的（包括大括号一起替换），然后把【yyykey】也替换成刚刚显示的Secret Key。</p>
 <p data-source-line="216"><a href="https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&amp;client_id=wGOPzvhu4s1ACsKhhuFr3eM6&amp;client_secret=pwwFtyx17saYcXLd4FckFuhFBQ1jdn9M&amp;" target="_blank">https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&amp;client_id=【xxxkey】&amp;client_secret=【yyykey】&amp;</a></p>
 <p data-source-line="218">浏览器打开上面的链接后，会返回一堆文本，我们在里面找到【access_token】，将其保留和复制，记录在一个地方。</p>
-<p data-source-line="220"><img src="../images/_1_2_8.png" alt="image.png" data-processed="..%2Fimages%2F_1_2_8.png"></p>
+<p data-source-line="220"><img src="/images/_1_2_8.png" alt="image.png" data-processed="..%2Fimages%2F_1_2_8.png"></p>
 <p data-source-line="222"><a></a></p>
 <h4 id="55-步骤五编写脚本来实现人脸对比" data-source-line="224"><a class="markdownIt-Anchor" href="#55-步骤五编写脚本来实现人脸对比"></a>5.5 步骤五，编写脚本来实现人脸对比。</h4>
 <p data-source-line="226">例如我这里使用两张人脸图像分别叫2.jpg和35.jpg。</p>
@@ -200,7 +200,7 @@ coreClock: 1.8GHz coreCount: 68 deviceMemorySize: 10.00GiB deviceMemoryBandwidth
     score = json.loads(response)[<span class="hljs-string">'result'</span>][<span class="hljs-string">'score'</span>]
     print(score)
 </code></pre><p data-source-line="255">不需要TF环境，直接原生的Python环境，运行即可得到输出，可以看到相似度为96，非常的高，可以认为是一个人。</p>
-<p data-source-line="257"><img src="../images/_1_2_9.png" alt="image.png" data-processed="..%2Fimages%2F_1_2_9.png"></p>
+<p data-source-line="257"><img src="/images/_1_2_9.png" alt="image.png" data-processed="..%2Fimages%2F_1_2_9.png"></p>
 <p data-source-line="259"><a></a></p>
 <h4 id="56-步骤六将其做成一个本地的服务" data-source-line="260"><a class="markdownIt-Anchor" href="#56-步骤六将其做成一个本地的服务"></a>5.6 步骤六，将其做成一个本地的服务。</h4>
 <p data-source-line="262">接上节Python与环境中，在my_env1的环境下，我们制作了一个启动后，即可采用浏览器打开的方式，来访问的服务，我们同样可以将这个百度的API服务，打包成我们自己的一个服务，操作步骤如下。</p>
@@ -248,5 +248,5 @@ service_config = {
 </code></pre><p data-source-line="309">然后，<a href="http://xn--config-og4j14hs44oyypa.py" target="_blank">运行启动config.py</a>，启动后在浏览器输入：</p>
 <pre data-source-line="310"><code class="hljs">http://localhost:12345/face_similarity?face_path1=D:/test_api/2.jpg&amp;face_path2=D:/test_api/35.jpg
 </code></pre><p data-source-line="313">其中face_path1后面的是第一张人脸的路径。face_path2后面的是第二张人脸的路径。可以看到计算的结果如下图。</p>
-<p data-source-line="315"><img src="../images/_1_2_10.png" alt="iage.png" data-processed="..%2Fimages%2F_1_2_10.png"><br></p>
+<p data-source-line="315"><img src="/images/_1_2_10.png" alt="iage.png" data-processed="..%2Fimages%2F_1_2_10.png"><br></p>
 </div></article><body></body></html>
